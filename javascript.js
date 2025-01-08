@@ -53,25 +53,13 @@ function playRound() {
 let computerScore = 0;
 let humanScore = 0;
 
-// Play 5 rounds and declare winner
-function playGame() {
-    console.log("🏁 Welcome to Rock, Paper, Scissors - Best of 5 Rounds! 🏁");
-
-    for (let i = 1; i <= 5; i++) {
-        console.log(`\n🎲 Round ${i}:`);
-        playRound();
-        console.log(`Current Score -> Human: ${humanScore} | Computer: ${computerScore}`);
-    }
-
-    console.log("\n🏆 Final Results 🏆");
-    if (humanScore > computerScore) {
-        console.log("🎉 Human wins the game! Congratulations! 🎉");
-    } else if (computerScore > humanScore) {
-        console.log("🤖 Computer wins the game! Better luck next time! 🤖");
-    } else {
-        console.log("😐 It's a tie overall! What a close match! 😐");
-    }
+//Declare final winner
+console.log("\n🏆 Final Results 🏆");
+if (humanScore > computerScore) {
+    console.log("🎉 Human wins the game! Congratulations! 🎉");
+} else if (computerScore > humanScore) {
+    console.log("🤖 Computer wins the game! Better luck next time! 🤖");
+} else {
+    console.log("😐 It's a tie overall! What a close match! 😐");
 }
 
-// Start the game
-playGame();
