@@ -13,20 +13,9 @@ function getComputerChoice(min = 1, max = 3) {
     return numberToWords(randomNumber);
 }
 
-function playRound() {
-    let getHumanChoice = prompt("Choose Rock, Paper, or Scissors");
+// Function to play a single round
+function playRound(humanChoice) {
     let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice.trim().toLowerCase();
-
-    // Normalize humanChoice
-    if (humanChoice === "rock") humanChoice = "Rock";
-    else if (humanChoice === "paper") humanChoice = "Paper";
-    else if (humanChoice === "scissors") humanChoice = "Scissors";
-    else {
-        console.log("Invalid choice! Please choose Rock, Paper, or Scissors.");
-        return; // Exit the round if input is invalid
-    }
-
     console.log(`Computer chose: ${computerChoice}`);
     console.log(`Human chose: ${humanChoice}`);
 
@@ -35,8 +24,8 @@ function playRound() {
     if (computerChoice === humanChoice) {
         roundOutcome = "It's a tie!";
     } else if (
-        (computerChoice === "Rock" && humanChoice === "Scissors") || 
-        (computerChoice === "Scissors" && humanChoice === "Paper") || 
+        (computerChoice === "Rock" && humanChoice === "Scissors") ||
+        (computerChoice === "Scissors" && humanChoice === "Paper") ||
         (computerChoice === "Paper" && humanChoice === "Rock")
     ) {
         roundOutcome = `Computer wins this round! ${computerChoice} beats ${humanChoice}.`;
@@ -47,19 +36,37 @@ function playRound() {
     }
 
     console.log(roundOutcome);
+    console.log(`Current Score -> Human: ${humanScore} | Computer: ${computerScore}`);
 }
 
 // Initialize scores
 let computerScore = 0;
 let humanScore = 0;
 
-//Declare final winner
-console.log("\n🏆 Final Results 🏆");
-if (humanScore > computerScore) {
-    console.log("🎉 Human wins the game! Congratulations! 🎉");
-} else if (computerScore > humanScore) {
-    console.log("🤖 Computer wins the game! Better luck next time! 🤖");
-} else {
-    console.log("😐 It's a tie overall! What a close match! 😐");
-}
+//add event listeners to buttons
+document.getElementById("btn1").addEventListener("click", () => playRound("Rock"));
+document.getElementById("btn2").addEventListener("click", () => playRound("Paper"));
+document.getElementById("btn3").addEventListener("click", () => playRound("Scissors"));
 
+
+// Play 5 rounds and declare winner
+function playGame() {
+    console.log("🏁 Welcome to Rock, Paper, Scissors - Best of 1 Round! 🏁");
+    for (let i = 1; i <= 1; i++) {
+        console.log(`\n🎲 Round ${i}:`);
+        playRound();
+        console.log(`Current Score -> Human: ${humanScore} | Computer: ${computerScore}`);
+    }
+
+    //Declare final winner
+    console.log("\n🏆 Final Results 🏆");
+    if (humanScore > computerScore) {
+        console.log("🎉 Human wins the game! Congratulations! 🎉");
+    } else if (computerScore > humanScore) {
+        console.log("🤖 Computer wins the game! Better luck next time! 🤖");
+    } else {
+        console.log("😐 It's a tie overall! What a close match! 😐");
+    }
+}
+// Start the game
+playGame();
