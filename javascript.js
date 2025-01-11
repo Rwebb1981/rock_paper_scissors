@@ -1,3 +1,14 @@
+// Updated script.js
+
+// Initialize scores
+let computerScore = 0;
+let humanScore = 0;
+
+// Reference to result and score divs
+const resultDiv = document.getElementById("resultDiv");
+const scoreDiv = document.getElementById("scoreDiv");
+
+// Function to get the computer's choice
 function getComputerChoice(min = 1, max = 3) {
     function numberToWords(number) {
         const words = ["Scissors", "Paper", "Rock"];
@@ -16,9 +27,6 @@ function getComputerChoice(min = 1, max = 3) {
 // Function to play a single round
 function playRound(humanChoice) {
     let computerChoice = getComputerChoice();
-    console.log(`Computer chose: ${computerChoice}`);
-    console.log(`Human chose: ${humanChoice}`);
-
     let roundOutcome = ""; // Store the outcome message
 
     if (computerChoice === humanChoice) {
@@ -35,38 +43,12 @@ function playRound(humanChoice) {
         humanScore++;
     }
 
-    console.log(roundOutcome);
-    console.log(`Current Score -> Human: ${humanScore} | Computer: ${computerScore}`);
+    // Update the result and score divs
+    resultDiv.textContent = `Computer chose: ${computerChoice}. Human chose: ${humanChoice}. ${roundOutcome}`;
+    scoreDiv.textContent = `Score: Human ${humanScore} | Computer ${computerScore}`;
 }
 
-// Initialize scores
-let computerScore = 0;
-let humanScore = 0;
-
-//add event listeners to buttons
+// Add event listeners to buttons
 document.getElementById("btn1").addEventListener("click", () => playRound("Rock"));
 document.getElementById("btn2").addEventListener("click", () => playRound("Paper"));
 document.getElementById("btn3").addEventListener("click", () => playRound("Scissors"));
-
-
-// Play 5 rounds and declare winner
-function playGame() {
-    console.log("🏁 Welcome to Rock, Paper, Scissors - Best of 1 Round! 🏁");
-    for (let i = 1; i <= 1; i++) {
-        console.log(`\n🎲 Round ${i}:`);
-        playRound();
-        console.log(`Current Score -> Human: ${humanScore} | Computer: ${computerScore}`);
-    }
-
-    //Declare final winner
-    console.log("\n🏆 Final Results 🏆");
-    if (humanScore > computerScore) {
-        console.log("🎉 Human wins the game! Congratulations! 🎉");
-    } else if (computerScore > humanScore) {
-        console.log("🤖 Computer wins the game! Better luck next time! 🤖");
-    } else {
-        console.log("😐 It's a tie overall! What a close match! 😐");
-    }
-}
-// Start the game
-playGame();

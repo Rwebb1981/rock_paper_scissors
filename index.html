@@ -3,13 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, Paper, Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .result, .score {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
 </head>
-<h1>Rock, Paper, Scissors Game!</h1>
 <body>
+    <h1>Rock, Paper, Scissors</h1>
     <button id="btn1">Rock</button>
     <button id="btn2">Paper</button>
     <button id="btn3">Scissors</button>
+    
+    <div class="result" id="resultDiv">Make your move!</div>
+    <div class="score" id="scoreDiv">Score: Human 0 | Computer 0</div>
+
     <script src="javascript.js"></script>
 </body>
 </html>
